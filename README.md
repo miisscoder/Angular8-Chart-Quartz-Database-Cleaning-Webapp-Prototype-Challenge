@@ -2,7 +2,7 @@
 
 ### Description
 A database cleaning process to eliminate duplicate data following certain criteria defined by the user.
-
+./guide-video.mp4
 
 ## Prerequisites
 1. Node 10.x
