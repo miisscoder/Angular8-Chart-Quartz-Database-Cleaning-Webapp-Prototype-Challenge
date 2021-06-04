@@ -1,0 +1,108 @@
+/*review-page*/
+.review-contents {
+
+    .main-content {
+        margin: 28px 51px;
+        position: relative;
+        min-height: 990px;
+
+        
+        /*selects*/
+        .select-part {
+            display: flex;
+            display: -ms-flexbox;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            -webkit-box-align: start;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            .select-group {
+                display: flex;
+                display: -ms-flexbox;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                justify-content: flex-start;
+                margin-right: 64px;
+
+                .label {
+                    font-family: ProximaNova-Semibold;
+                    font-size: 18px;
+                    color: #354052;
+                    letter-spacing: 0.3px;
+                    margin-right: 12px;
+                }
+
+                .dropdown-toggle::after {
+                    display: none;
+                }
+
+
+
+                .btn-select-review {
+                    display: flex;
+                    display: -ms-flexbox;
+                    -webkit-box-pack: justify;
+                    -ms-flex-pack: justify;
+                    -webkit-box-align: center;
+                    -webkit-align-items: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    justify-content: space-between;
+                    background: #FFFFFF;
+                    border: 1px solid #CED0DA;
+                    border-radius: 4px;
+                    width: 160px;
+                    height: 36px;
+                    line-height: 36px;
+                    padding: 0 9px;
+
+                    .txt {
+                        font-family: ProximaNova-Semibold;
+                        font-size: 14px;
+                        color: #006BD5;
+                        line-height: 19px;
+
+                        &.default {
+                            font-family: ProximaNova-Semibold;
+                            font-size: 14px;
+                            color: #686868;
+                            line-height: 19px;
+                        }
+                    }
+
+                    img {
+                        width: 11.3px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+        /*default image txt*/
+        .default-result {
+            text-align: center;
+            justify-content: center;
+            margin-top: 23px;
+
+            img {
+                height: 335px;
+                width: auto;
+            }
+
+            .txt {
+                font-family: ProximaNova-Regular;
+                font-size: 32px;
+                color: #797979;
+                margin-top: 5px;
+                letter-spacing: 0.53px;
+                height: 38px;
+            }
+        }
+    }
+}

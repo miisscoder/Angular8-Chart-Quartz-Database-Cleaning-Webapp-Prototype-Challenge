@@ -1,0 +1,24 @@
+﻿/*sort*/
+
+.asc {
+    cursor: pointer;
+
+    img {
+        width: 9px;
+        height: auto;
+    }
+}
+
+.desc {
+    cursor: pointer;
+
+    img {
+        width: 9px;
+        height: auto;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}

@@ -1,0 +1,120 @@
+﻿<div class="status-table">
+    <!--table top bar-->
+    <div class="top-bar">
+        <div class="left">Latest Status</div>
+        <div class="right">
+            <button class="btn btn-process-all" (click)="processAll()">
+                <span *ngIf="!processingAll">
+                    <img src="/assets/image/lightning.svg" alt="" />
+                    <span class="txt" *ngIf="!checkedSome">Process All</span>
+                    <span class="txt" *ngIf="checkedSome">Process Selected</span>
+                </span>
+                <span *ngIf="processingAll">
+                    <i class="icon-loading"></i>
+                    <span class="txt">Process...</span>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="table" sortable-table (sorted)="onSorted($event)">
+        <div class="thead">
+            <div class="round-checkbox" (click)="selectAll()">
+                <input type="checkbox" [(ngModel)]="checkedAll">
+                <span>✔</span>
+            </div>
+            <div class="right">
+                <div class="one" sortable-column="well" sort-direction="desc">Well</div>
+                <div class="two" sortable-column="stage" sort-direction="desc">Stage No</div>
+                <div class="three">API</div>
+                <div class="four">Records Affected</div>
+                <div class="five">Duplicates</div>
+                <div class="six">Status</div>
+                <div class="seven">Action</div>
+            </div>
+        </div>
+        <!--body content-->
+        <ng-container *ngFor="let i of items"  >
+            <div class="tr">
+                <div class="round-checkbox" (click)="checkOne(i)">
+                    <input type="checkbox" [(ngModel)]="i.checked">
+                    <span>✔</span>
+                </div>
+                <div class="tr-group"  [ngClass]="{'reportExpand': !i.hideReport}">
+                    <div class="white" [ngClass]="{'grey': !i.hideReport}">
+                        <div class="one">{{i.well}}</div>
+                        <div class="two">{{i.stage}}</div>
+                        <div class="three">{{i.api}}</div>
+                        <div class="four">{{i.records}}</div>
+                        <div class="five">{{i.duplicates}}</div>
+                        <div class="six">
+                            <i class="blue-dot" *ngIf="i.status==='Completed'"></i>
+                            <i class="grey-dot" *ngIf="i.status==='Not Processed'"></i>
+                            <i class="orange-dot" *ngIf="i.status==='Needs Manual Review'"></i>
+                            {{i.status}}
+                        </div>
+                        <div class="seven">
+                            <!--process action-->
+                            <button *ngIf="i.status==='Not Processed'"
+                                    class="btn btn-process"
+                                    (click)="process(i)">
+                                Process
+                            </button>
+                            <div *ngIf="i.status==='Processing'">
+                                <img src="/assets/image/loading.svg" alt="" />
+                                <span class="blacktxt">Processing...</span>
+                            </div>
+
+                            <!--View Report action-->
+                            <a href="javascript:;" *ngIf="i.status==='Completed'"
+                               (click)="i.hideReport=!i.hideReport">
+                                <img *ngIf="i.hideReport" src="/assets/image/medical.svg" alt="" />
+                                <span *ngIf="i.hideReport" class="txt">View Report</span>
+                                <img class="blue-triangle" *ngIf="!i.hideReport" src="/assets/image/blue-triangle.svg" alt="" />
+                                <span *ngIf="!i.hideReport" class="txt">Hide Report</span>
+                            </a>
+
+                            <!--Review-->
+                            <a [routerLink]="['/review']" *ngIf="i.status==='Needs Manual Review'">
+                                <img src="/assets/image/search.svg" alt="" />
+                                <span class="txt">Review</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="report" [ngClass]="{'hide': i.hideReport}" *ngIf="i.status==='Completed'">
+                        <div class="one">
+                            <div class="no">{{i["report"].rows}}</div>
+                            <div class="txt">Rows processed</div>
+                        </div>
+                        <div class="two">
+                            <div class="content">
+                                <div class="left">
+                                    <div class="no">{{i["report"].original}}</div>
+                                    <div class="txt" *ngIf="i['report'].original===0 || i['report'].original===1">
+                                        Column in<br /><span class="bold-txt">original</span> dataset
+                                    </div>
+                                    <div class="txt" *ngIf="i['report'].original>1">
+                                        Columns in<br /><span class="bold-txt">original</span> dataset
+                                    </div>
+                                </div>
+                                <img src="/assets/image/arrow-group.svg" alt="" />
+                                <div class="right">
+                                    <div class="no">{{i["report"].final}}</div>
+                                    <div class="txt" *ngIf="i['report'].final===0 || i['report'].final===1">
+                                        Column in<br /><span class="bold-txt">final</span> dataset
+                                    </div>
+                                    <div class="txt" *ngIf="i['report'].final>1">
+                                        Columns in<br /><span class="bold-txt">final</span> dataset
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="three">
+                            <div class="no">{{i["report"].name}}</div>
+                            <div class="txt">Column used as Master Data</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

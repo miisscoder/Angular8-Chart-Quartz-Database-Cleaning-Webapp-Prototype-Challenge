@@ -1,0 +1,181 @@
+<div class="review-result">
+    <!--Channel Statistics-->
+    <div class="one">
+        <div class="title">Channel Statistics</div>
+        <div class="cards">
+            <div class="numbercard">
+                <div class="group">
+                    <div class="txt">MIN VALUE</div>
+                    <div class="no">{{data.sum.min}}</div>
+                </div>
+                <div class="group">
+                    <div class="txt">MAX VALUE</div>
+                    <div class="no">{{data.sum.max}}</div>
+                </div>
+            </div>
+            <div class="numbercard">
+                <div class="group">
+                    <div class="txt">MIN VALUE</div>
+                    <div *ngIf="data.sum.mean.length<=3" class="no">{{data.sum.mean}}</div>
+                    <div *ngIf="data.sum.mean.length>3">
+                        <span class="no">
+                            {{data.sum.mean.slice(0,data.sum.mean.length-2)}}<span class="small-no">{{data.sum.mean.slice(data.sum.mean.length-2)}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="txt">MAX VALUE</div>
+                    <div *ngIf="data.sum.median.length<=3" class="no">{{data.sum.median}}</div>
+                    <div *ngIf="data.sum.median.length>3">
+                        <span class="no">
+                            {{data.sum.median.slice(0,data.sum.median.length-2)}}<span class="small-no">{{data.sum.median.slice(data.sum.median.length-2)}}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="numbercard-one">
+                <div class="group">
+                    <div class="txt">MIN VALUE</div>
+                    <div class="no">{{data.sum.variance}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Statistics Per Channel-->
+    <div class="two">
+        <div class="title">Statistics Per Channel</div>
+        <div class="table">
+            <div class="thead">
+                <div class="one-th">Channel</div>
+                <div class="two-th">Min</div>
+                <div class="three-th">Max</div>
+                <div class="four-th">Mean</div>
+                <div class="five-th">Average</div>
+                <div class="six-th">% in Range</div>
+            </div>
+            <div class="tbody">
+                <div class="tr" *ngFor="let i of data.per;let id = index;">
+                    <div class="one-td"><i class="dot" [ngStyle]="{ 'background': getDotColorbyID(id)}"></i>{{i.channel| uppercase}}</div>
+                    <div class="two-td">{{i.min}}</div>
+                    <div class="three-td">{{i.max}}</div>
+                    <div class="four-td">{{i.mean}}</div>
+                    <div class="five-td">{{i.average}}</div>
+                    <div class="six-td">{{i.percentage}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end .Statistics Per Channel  -->
+    <div class="three">
+        <div class="top-line">
+            <div class="title">Channel Value vs Time</div>
+
+            <div class="select-group">
+                <div ngbDropdown class="d-inline-block little">
+                    <button class="btn btn-select-month" ngbDropdownToggle>
+                        <span class="txt">{{months.selected}} Months</span>
+                        <img src="/assets/image/select-arrow.svg" alt="" />
+                    </button>
+                    <div ngbDropdownMenu>
+                        <button class="dropdown-item"
+                                *ngFor="let i of months.options"
+                                (click)="months.selected  = i;getChartdata();">
+                            {{i}} Months
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <canvas baseChart width="400" height="100" *ngIf="showChart"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <!-- end .Channel Value vs Time -->
+    <div class="four">
+        <div class="txt-bottom">Based on the statistics choose a Column which should be used for master record </div>
+        <div class="select-group">
+            <div class="label">VALIDATION</div>
+            <div ngbDropdown class="d-inline-block little">
+                <button class="btn btn-select-validation" ngbDropdownToggle>
+                    <span class="txt" [ngClass]="{'default': validations.selected==='Select'}">
+                        <i class="dot" *ngIf="validations.selected!=='Select'"
+                           [ngStyle]="{ 'background':getDotColorbyID(dotid)}"></i>
+                        {{validations.selected}}
+                    </span>
+                    <img src="/assets/image/select-arrow.svg" alt="" />
+                </button>
+                <div ngbDropdownMenu>
+                    <button class="dropdown-item"
+                            *ngFor="let i of validations.options;let id = index;"
+                            (click)="validationSelected(i,id)">
+                        <i class="dot" [ngStyle]="{ 'background': getDotColorbyID(id)}"></i> {{i}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-apply-grey" [ngClass]="{'usable':!(validations.selected === 'Select')}" >
+            <span class="apply-txt" *ngIf="!processing" (click)="apply()">
+                <span class="txt">Apply</span>
+            </span>
+            <span *ngIf="validations.selected !== 'Select'&&processing">
+                <i class="icon-loading"></i>
+                <span class="txt">Process...</span>
+            </span>
+        </button>
+    </div>
+
+    <ng-template #sosModal let-c="close" let-d="dismiss">
+        <div class="modal-boxs review-modal">
+            <div class="modal-inner">
+                <div class="modal-title">Validation Successful</div>
+                <div class="modal-info">
+                    <img src="/assets/image/checked.svg" alt="" />
+                    <div class="info-txt"><strong>{{i.channel}}</strong> was successfully applied to master</div>
+                </div>
+                <div class="report" [ngClass]="{'hide': i.hideReport}">
+                    <div class="one">
+                        <div class="no">{{i["report"].rows}}</div>
+                        <div class="txt">Rows processed</div>
+                    </div>
+                    <div class="two">
+                        <div class="content">
+                            <div class="left">
+                                <div class="no">{{i["report"].original}}</div>
+                                <div class="txt" *ngIf="i['report'].original===0 || i['report'].original===1">
+                                    Column in<br /><span class="bold-txt">original</span> dataset
+                                </div>
+                                <div class="txt" *ngIf="i['report'].original>1">
+                                    Columns in<br /><span class="bold-txt">original</span> dataset
+                                </div>
+                            </div>
+                            <img src="/assets/image/arrow-group.svg" alt="" />
+                            <div class="right">
+                                <div class="no">{{i["report"].final}}</div>
+                                <div class="txt" *ngIf="i['report'].final===0 || i['report'].final===1">
+                                    Column in<br /><span class="bold-txt">final</span> dataset
+                                </div>
+                                <div class="txt" *ngIf="i['report'].final>1">
+                                    Columns in<br /><span class="bold-txt">final</span> dataset
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="no">{{i["channel"]}}</div>
+                        <div class="txt">Column used as Master Data</div>
+                    </div>
+                </div>
+                <div class="footer-button">
+                    <a [routerLink]="['/home']" class="btn btn-continue" (click)="c('Close click')">Continue to Home</a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <!-- end .import-profile-modal -->
+</div>

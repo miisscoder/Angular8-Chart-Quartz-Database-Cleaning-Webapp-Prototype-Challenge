@@ -1,0 +1,16 @@
+/*home-content*/
+.home-contents {
+    position: relative;
+
+    .main-content {
+        margin: 27px 24px 56px;
+        position: relative;
+
+        .summary-card {
+            background: #FFFFFF;
+            box-shadow: 0 2px 2px 0 rgba(207,207,207,0.50);
+            border-radius: 4px;
+            width: 100%;
+        }
+    }
+}

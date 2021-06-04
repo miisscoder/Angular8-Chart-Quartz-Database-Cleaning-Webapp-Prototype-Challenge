@@ -1,0 +1,27 @@
+﻿{
+  "duration": "1 Week",
+  "options": [
+    {
+      "label": "Today"
+    },
+    {
+      "label": "1 Week"
+    },
+    {
+      "label": "1 Month"
+    }
+  ],
+  "total": {
+    "amount": 1003,
+    "percent": 0.6
+  },
+  "records":{
+    "amount": 888,
+    "percent": 0.5
+  },
+  "manual": {
+    "amount": 23,
+    "percent": 0.25
+  },
+  "rate": "88.6%"
+}

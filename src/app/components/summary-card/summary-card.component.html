@@ -1,0 +1,63 @@
+<!--home cards-->
+
+<div class="summary-card">
+    <div class="one">
+        <div class="title">Duration</div>
+        <div ngbDropdown class="d-inline-block little">
+            <button class="btn btn-select-duration" ngbDropdownToggle>
+                <span class="txt">{{duration}}</span><img src="/assets/image/select-arrow.svg" alt="" />
+            </button>
+            <div ngbDropdownMenu>
+                <button class="dropdown-item"
+                        *ngFor="let item of options"
+                        (click)="duration = item.label">
+                    {{item.label}}
+                </button>
+            </div>
+        </div>
+        <!-- end .dropdown -->
+    </div>
+    <div class="two">
+        <canvas baseChart
+                *ngIf="showChart"
+                [datasets]="doughnutChartData"
+                [chartType]="doughnutChartType"
+                [colors]="doughnutChartColors"
+                width="100" height="100"></canvas>
+    </div>
+    <div class="three">
+        <div class="title">
+            Total Confilcts
+        </div>
+        <div class="blue">
+            {{total}}
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="four">
+        <div class="title">
+            Records Auto-Processed
+        </div>
+        <div class="green">
+            {{records}}
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="five">
+        <div class="title">
+            Manual Intervention Needed
+        </div>
+        <div class="orange">
+            {{manual}}
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="six">
+        <div class="title">
+            Auto-Rate
+        </div>
+        <div class="black">
+            {{data.rate}}
+        </div>
+    </div>
+</div>

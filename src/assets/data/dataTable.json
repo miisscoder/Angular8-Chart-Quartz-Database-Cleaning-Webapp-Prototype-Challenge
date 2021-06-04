@@ -1,0 +1,182 @@
+﻿[
+  {
+    "id": 1,
+    "well": "Ailurian",
+    "stage": 2310,
+    "api": "lipsum",
+    "records": 18,
+    "duplicates": 8,
+    "status": "Not Processed",
+    "nextStatus": "Completed",
+    "report": {
+      "rows": 189,
+      "original": 17,
+      "final": 12,
+      "name": "clean_rate_1_dup_0"
+    },
+    "hideReport": true,
+    "checked": false
+  },
+  {
+    "id": 2,
+    "well": "Gehringer",
+    "stage": 123,
+    "api": "dolorsit",
+    "records": 12,
+    "duplicates": 4,
+    "status": "Completed",
+    "nextStatus": "Completed",
+    "report": {
+      "rows": 139,
+      "original": 27,
+      "final": 11,
+      "name": "clean_rate_2_dup_0"
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id": 3,
+    "well": "Lohringer",
+    "stage": 4,
+    "api": "amet",
+    "records": 12,
+    "duplicates": 12,
+    "status": "Completed",
+    "nextStatus": "Completed",
+    "report": {
+      "rows": 193,
+      "original": 72,
+      "final": 31,
+      "name": "clean_rate_3_dup_0"
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id": 4,
+    "well": "Ailurian",
+    "stage": 2310,
+    "api": "lipsum",
+    "records": 18,
+    "duplicates": 8,
+    "status": "Not Processed",
+    "nextStatus": "Needs Manual Review",
+    "report": {
+      "rows": 0,
+      "original": 0,
+      "final": 0,
+      "name": ""
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id": 5,
+    "well": "Ailurian",
+    "stage": 2310,
+    "api": "lipsum",
+    "records": 18,
+    "duplicates": 8,
+    "status": "Needs Manual Review",
+    "nextStatus": "",
+    "report": {
+      "rows": 0,
+      "original": 0,
+      "final": 0,
+      "name": ""
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id": 6,
+    "well": "Gehringer",
+    "stage": 123,
+    "api": "dolorsit",
+    "records": 105,
+    "duplicates": 4,
+    "status": "Completed",
+    "nextStatus": "",
+    "report": {
+      "rows": 144,
+      "original": 44,
+      "final": 22,
+      "name": "clean_rate_4_dup_0"
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id":7,
+    "well": "Lohringer",
+    "stage": 4,
+    "api": "amet",
+    "records": 120,
+    "duplicates": 42,
+    "status": "Completed",
+    "nextStatus": "",
+    "report": {
+      "rows": 239,
+      "original": 42,
+      "final": 33,
+      "name": "clean_rate_5_dup_0"
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id":8,
+    "well": "Lohringer",
+    "stage": 4,
+    "api": "amet",
+    "records": 12,
+    "duplicates": 4,
+    "status": "Not Processed",
+    "nextStatus": "Completed",
+    "report": {
+      "rows": 393,
+      "original": 172,
+      "final": 131,
+      "name": "clean_rate_6_dup_0"
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id":9,
+    "well": "Lohringer",
+    "stage": 4,
+    "api": "amet",
+    "records": 12,
+    "duplicates": 4,
+    "status": "Not Processed",
+    "nextStatus": "Needs Manual Review",
+    "report": {
+      "rows": 0,
+      "original": 0,
+      "final": 0,
+      "name": ""
+    },
+    "hideReport":true,
+    "checked": false
+  },
+  {
+    "id":10,
+    "well": "Ailurian",
+    "stage": 2310,
+    "api": "lipsum",
+    "records": 18,
+    "duplicates": 8,
+    "status": "Needs Manual Review",
+    "nextStatus": "",
+    "report": {
+      "rows": 0,
+      "original": 0,
+      "final": 0,
+      "name": ""
+    },
+    "hideReport":true,
+    "checked": false
+  }
+]

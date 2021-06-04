@@ -1,0 +1,67 @@
+<div class="review-contents">
+    <app-sd-header></app-sd-header>
+    <!--end .header-->
+    <div class="main-content clearfix">
+        <!--select group-->
+        <div class="select-part">
+            <div class="select-group">
+                <div class="label">Well Name</div>
+                <div ngbDropdown class="d-inline-block little">
+                    <button class="btn btn-select-review" ngbDropdownToggle>
+                        <span class="txt" 
+                               [ngClass]="{'default': dataList.well.selected=='Select'}">{{dataList.well.selected}}</span>
+                        <img src="/assets/image/select-arrow.svg" alt="" />
+                    </button>
+                    <div ngbDropdownMenu>
+                        <button class="dropdown-item"
+                                *ngFor="let i of dataList.well.options"
+                                (click)="dataList.well.selected = i.item">
+                            {{i.item}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="select-group">
+                <div class="label">Stage No</div>
+                <div ngbDropdown class="d-inline-block little">
+                    <button class="btn btn-select-review" ngbDropdownToggle>
+                        <span class="txt"  [ngClass]="{'default': dataList.stage.selected=='Select'}">{{dataList.stage.selected}}</span>
+                        <img src="/assets/image/select-arrow.svg" alt="" />
+                    </button>
+                    <div ngbDropdownMenu>
+                        <button class="dropdown-item"
+                                *ngFor="let i of dataList.stage.options"
+                                (click)="dataList.stage.selected = i.item">
+                            {{i.item}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="select-group">
+                <div class="label">Channel Prefix</div>
+                <div ngbDropdown class="d-inline-block little">
+                    <button class="btn btn-select-review" ngbDropdownToggle>
+                        <span class="txt" [ngClass]="{'default': dataList.channel.selected=='Select'}">{{dataList.channel.selected}}</span>
+                        <img src="/assets/image/select-arrow.svg" alt="" />
+                    </button>
+                    <div ngbDropdownMenu>
+                        <button class="dropdown-item"
+                                *ngFor="let i of dataList.channel.options"
+                                (click)="dataList.channel.selected = i.item">
+                            {{i.item}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="default-result" *ngIf="(dataList.well.selected==='Select'&&dataList.stage.selected==='Select'&&dataList.channel.selected==='Select')">
+            <img src="/assets/image/here-arrow.svg" alt=""/>
+            <div class="txt">Refine your selection to view records</div>
+        </div>
+        <app-review-result *ngIf="!(dataList.well.selected==='Select'&&dataList.stage.selected==='Select'&&dataList.channel.selected==='Select')"></app-review-result>
+    </div>
+    <!--end .main-content-->
+    <app-sd-footer></app-sd-footer>
+    <!--end .footer-->
+</div>
+<!-- end .contents -->

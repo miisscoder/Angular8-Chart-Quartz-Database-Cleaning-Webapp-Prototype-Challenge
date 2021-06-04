@@ -1,0 +1,115 @@
+/* .header */
+.header {
+    height: 77px;
+    padding: 0 24px;
+    display: flex;
+    display: -ms-flexbox;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background-color: #223B63;
+
+    .lefts {
+        display: flex;
+        display: -ms-flexbox;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        justify-content: space-between;
+
+
+        img {
+            height: 29px;
+            width: auto;
+        }
+        /* .nav-left  */
+        .nav-left {
+            margin-left: 83px;
+
+            .btn-link {
+                font-family: ProximaNova-Semibold;
+                font-size: 16px;
+                color: #FFFFFF;
+                letter-spacing: 1.23px;
+                height: 76px;
+                width: 138px;
+                text-align: center;
+                line-height: 76px;
+                display: inline-block;
+                margin-right: 10px;
+                border-radius: 0;
+                text-transform: uppercase;
+
+                &.current {
+                    background-color: rgba(255, 255, 255, .28);
+                }
+
+                &:hover,
+                &:focus,
+                &:active {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .rights {
+        display: flex;
+        display: -ms-flexbox;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        justify-content: space-between;
+
+        .txt {
+            font-family: ProximaNova-Semibold;
+            font-size: 15px;
+            color: #85C2FF;
+            letter-spacing: 0.3px;
+            margin-left:12px;
+        }
+
+        .boy-area {
+            .boy {
+                height: 33px;
+                width: auto;
+            }
+
+            .arrrow {
+                margin-left: 14px;
+                height: auto;
+                width: 7.1px;
+            }
+        }
+
+        .setting-area {
+            margin-left: 30.9px;
+
+            img {
+                width: 18px;
+                height: auto;
+            }
+        }
+        .logout-area {
+            margin-left: 37px;
+
+            img {
+                height: 20px;
+                width: auto;
+            }
+        }
+    }
+}

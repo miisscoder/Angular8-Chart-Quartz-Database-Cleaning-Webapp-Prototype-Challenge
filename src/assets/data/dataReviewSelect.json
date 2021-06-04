@@ -1,0 +1,14 @@
+﻿{
+  "well": {
+    "selected": "Select",
+    "options": [ { "item": "Aillurian" } ]
+  },
+  "stage": {
+    "selected": "Select",
+    "options": [ { "item": "2310" } ]
+  },
+  "channel": {
+    "selected": "Select",
+    "options": [ { "item": "Channel-1313" } ]
+  }
+}
